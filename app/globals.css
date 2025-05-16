@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-theme text-content p-0 m-0;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@layer components {
+  .sidebar-item {
+    @apply flex items-center gap-3 rounded-lg px-4 py-2 text-content-secondary transition-colors hover:bg-theme-light hover:text-accent;
+  }
+
+  .sidebar-item.active {
+    @apply bg-theme-light text-accent;
+  }
+
+  .input-field {
+    @apply w-full rounded-lg border border-theme-light bg-theme-dark px-4 py-2.5 text-content transition-all placeholder:text-content-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/10 disabled:opacity-50;
+  }
+
+  .select-field {
+    @apply w-full appearance-none rounded-lg border border-theme-light bg-theme-dark px-4 py-2.5 text-content transition-all focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/10 disabled:opacity-50;
+  }
+
+  .card {
+    @apply rounded-xl bg-theme-card p-6 shadow-card border border-theme-light/10 backdrop-blur-sm;
+  }
+
+  .btn-primary {
+    @apply rounded-lg bg-accent px-4 py-2 text-theme font-medium transition-all hover:bg-accent/90 focus:outline-none focus:ring-4 focus:ring-accent/20 disabled:opacity-50;
+  }
+
+  .btn-secondary {
+    @apply rounded-lg bg-background-lighter px-4 py-2 text-content transition-all hover:bg-background-light focus:outline-none focus:ring-4 focus:ring-primary-500/10 disabled:opacity-50;
+  }
+
+  .chart-card {
+    @apply card bg-gradient-to-b from-theme-card to-theme-dark;
+  }
+
+  .stats-value {
+    @apply text-2xl font-semibold text-content;
+  }
+
+  .stats-label {
+    @apply text-sm text-content-secondary;
+  }
+
+  .trend-up {
+    @apply text-accent-green;
+  }
+
+  .trend-down {
+    @apply text-accent-red;
+  }
+
+  .sidebar-subitem {
+    @apply flex items-center gap-2 rounded-md px-3 py-2 text-sm text-content-secondary transition-all hover:bg-theme-light hover:text-accent;
+  }
+
+  .sidebar-subitem.active {
+    @apply bg-theme-light text-accent;
+  }
+}
+
+/* Özel Animasyonlar */
+@keyframes pulse-soft {un 
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Özel Select Stili */
+.custom-select {
+  @apply relative appearance-none;
+}
+
+.custom-select-wrapper {
+  @apply relative;
+}
+
+.custom-select-wrapper::after {
+  content: '';
+  @apply absolute right-4 top-1/2 h-2 w-2 -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-accent/50 transition-transform;
+}
+
+.custom-select-wrapper:hover::after {
+  @apply border-accent;
+}
+
+/* Select açıldığında ok işaretini döndür */
+.custom-select:focus+.custom-select-wrapper::after {
+  @apply -rotate-[135deg] translate-y-[-35%];
+}
+
+/* Select Options Stili */
+.custom-select option {
+  @apply bg-theme-dark text-content py-2 px-4;
+}
+
+/* Select hover ve focus durumları */
+.custom-select:hover {
+  @apply bg-theme-light/10;
+}
+
+.custom-select:focus {
+  @apply outline-none ring-2 ring-accent/20;
+}
